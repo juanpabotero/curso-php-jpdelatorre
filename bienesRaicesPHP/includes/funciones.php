@@ -9,11 +9,9 @@ function incluirTemplate(string $nombre, bool $inicio = false)
 
 function estaAutenticado(): bool
 {
+    // Iniciar sesión
     session_start();
 
-    $auth = $_SESSION['login'];
-    if ($auth) {
-        return true;
-    }
-    return false;
+    // $_SESSION['login'] es una variable de sesión que se crea en login.php
+    return $_SESSION['login'];
 }

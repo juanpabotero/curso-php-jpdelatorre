@@ -1,4 +1,5 @@
 <?php
+    // comprobar si hay una sesión iniciada
     if(!isset($_SESSION)) {
         session_start();
     }

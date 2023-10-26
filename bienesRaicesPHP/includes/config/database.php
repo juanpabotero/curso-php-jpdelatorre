@@ -1,7 +1,12 @@
 <?php
 
-function conectarDB(): mysqli
+function conectarDB(string $dir = ''): mysqli
 {
+    // cargar las variables de entorno con la libreria de Dotenv
+    require_once $dir . '../vendor/autoload.php';
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '../../../.env');
+    $dotenv->safeLoad();
+
     // leer las variables de entorno gracias a la libreria de Dotenv
     $password = $_ENV['DB_PASSWORD'];
 

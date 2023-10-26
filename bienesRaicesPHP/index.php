@@ -1,8 +1,4 @@
 <?php
-// cargar las variables de entorno con la libreria de Dotenv
-require '../vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '../.env');
-$dotenv->safeLoad();
 
 require 'includes/funciones.php';
 incluirTemplate('header', $inicio = true);

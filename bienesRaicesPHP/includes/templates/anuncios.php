@@ -1,20 +1,25 @@
-<?php 
-    // Importar la conexión
-    require __DIR__ . '/../config/database.php';
-    $db = conectarDB();
+<?php
+
+// Importar la conexión
+// __DIR__ devuelve la ruta de la carpeta donde se encuentra el archivo que lo llama
+require __DIR__ . '/../config/database.php';
+$db = conectarDB();
 
 
-    // consultar
-    $query = "SELECT * FROM propiedades LIMIT ${limite}";
+// consultar
+$query = "SELECT * FROM propiedades LIMIT $limite";
 
-    // obtener resultado
-    $resultado = mysqli_query($db, $query);
-
+// realizar la consulta
+// mysqli_query('conexion', 'consulta')
+$resultado = mysqli_query($db, $query);
 
 ?>
 
 <div class="contenedor-anuncios">
-        <?php while($propiedad = mysqli_fetch_assoc($resultado)): ?>
+    <!-- mysqli_fetch_assoc($resultadoConsulta): obtiene un registro de la consulta y
+        devuelve un array asociativo -->
+    <!-- el while va a ejecutar el código mientras haya registros -->
+    <?php while ($propiedad = mysqli_fetch_assoc($resultado)) : ?>
         <div class="anuncio">
 
             <img loading="lazy" src="/imagenes/<?php echo $propiedad['imagen']; ?>" alt="anuncio">
@@ -44,11 +49,10 @@
                 </a>
             </div><!--.contenido-anuncio-->
         </div><!--anuncio-->
-        <?php endwhile; ?>
-    </div> <!--.contenedor-anuncios-->
+    <?php endwhile; ?>
+</div> <!--.contenedor-anuncios-->
 
-<?php 
-
-    // Cerrar la conexión
-    mysqli_close($db);
+<?php
+// Cerrar la conexión
+mysqli_close($db);
 ?>
